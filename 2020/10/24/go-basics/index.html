@@ -123,7 +123,7 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      go-basics
+      GO基础笔记
     </h1>
   </header>
   <div class="post-meta post-show-meta">
@@ -139,7 +139,7 @@
     
     
     <span class="dot"></span>
-    <span>541 字</span>
+    <span>536 字</span>
     
   </div>
   
@@ -155,23 +155,17 @@
   
   </header>
   <div id="section" class="post-content">
-    <h4 id="GO基础笔记"><a href="#GO基础笔记" class="headerlink" title="GO基础笔记"></a>GO基础笔记</h4><blockquote>
-<p>批量变量声明  </p>
-</blockquote>
-<ul>
+    <h4 id="批量变量声明"><a href="#批量变量声明" class="headerlink" title="批量变量声明"></a>批量变量声明</h4><ul>
 <li>变量初始化：<br>Go语言在声明变量的时候，会自动对变量对应的内存区域进行初始化操作。每个变量会被初始化成其类型的默认值，例如： 整型和浮点型变量的默认值为0。 字符串变量的默认值为空字符串。 布尔型变量默认为false。 切片、函数、指针变量的默认为nil。<pre class="highlight"><span class="line"><span class="keyword">var</span> (</span><br><span class="line">    a <span class="keyword">string</span></span><br><span class="line">    b <span class="keyword">int</span></span><br><span class="line">    c <span class="keyword">bool</span></span><br><span class="line">    d <span class="keyword">float32</span></span><br><span class="line">)</span><br></pre>
-<blockquote>
-<p>批量常量声明</p>
-</blockquote>
+
 </li>
+</ul>
+<h4 id="批量常量声明"><a href="#批量常量声明" class="headerlink" title="批量常量声明"></a>批量常量声明</h4><ul>
 <li>相对于变量，常量是恒定不变的值，多用于定义程序运行期间不会改变的那些值。 常量的声明和变量声明非常类似，只是把var换成了const，常量在定义的时候必须赋值。<pre class="highlight"><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">    user = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line">    sex = <span class="string">&#x27;男&#x27;</span></span><br><span class="line">&#125;</span><br></pre>
 
 </li>
 </ul>
-<blockquote>
-<p>iota 常量计数器（GO）</p>
-</blockquote>
-<ul>
+<h4 id="iota-常量计数器（GO）"><a href="#iota-常量计数器（GO）" class="headerlink" title="iota 常量计数器（GO）"></a>iota 常量计数器（GO）</h4><ul>
 <li>是go语言的常量计数器，只能在常量的表达式中使用。<br>iota在const关键字出现时将被重置为0。const中每新增一行常量声明将使iota计数一次(iota可理解为const语句块中的行索引)。 使用iota能简化定义，在定义枚举时很有用。</li>
 <li>常见的iota:   <ol>
 <li>使用_跳过某些值<pre class="highlight"><span class="line">   <span class="keyword">const</span> (</span><br><span class="line">	n1 = <span class="literal">iota</span> <span class="comment">//0</span></span><br><span class="line">	n2        <span class="comment">//1</span></span><br><span class="line">	_</span><br><span class="line">	n4        <span class="comment">//3</span></span><br><span class="line">)</span><br></pre></li>
@@ -183,10 +177,7 @@
 </ol>
 </li>
 </ul>
-<blockquote>
-<p>字符串  </p>
-</blockquote>
-<ul>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><ul>
 <li>Go语言中字符串是需要用双引号包裹</li>
 <li>Go语言中单引号包裹的是字符<pre class="highlight"><span class="line"><span class="comment">// 字符串</span></span><br><span class="line">s := <span class="string">&quot;我是字符串&quot;</span></span><br><span class="line"><span class="comment">// 单独的字符</span></span><br><span class="line">b := <span class="string">&#x27;字&#x27;</span></span><br><span class="line">c := <span class="string">&#x27;符&#x27;</span></span><br></pre></li>
 </ul>
@@ -220,7 +211,7 @@
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#GO%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0"><span class="toc-text">GO基础笔记</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">批量变量声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E5%B8%B8%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">批量常量声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iota-%E5%B8%B8%E9%87%8F%E8%AE%A1%E6%95%B0%E5%99%A8%EF%BC%88GO%EF%BC%89"><span class="toc-text">iota 常量计数器（GO）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -251,7 +242,7 @@
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#GO%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0"><span class="toc-text">GO基础笔记</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">批量变量声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E5%B8%B8%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">批量常量声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iota-%E5%B8%B8%E9%87%8F%E8%AE%A1%E6%95%B0%E5%99%A8%EF%BC%88GO%EF%BC%89"><span class="toc-text">iota 常量计数器（GO）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li></ol>
     </div>
   </article>
   
@@ -301,7 +292,7 @@
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#GO%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0"><span class="toc-text">GO基础笔记</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">批量变量声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E5%B8%B8%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">批量常量声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iota-%E5%B8%B8%E9%87%8F%E8%AE%A1%E6%95%B0%E5%99%A8%EF%BC%88GO%EF%BC%89"><span class="toc-text">iota 常量计数器（GO）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li></ol>
   </article>
   
   
@@ -312,7 +303,7 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-10-24</div>
-        <a href="/2020/10/24/go-basics/"><div class="recent-posts-item-content">go-basics</div></a>
+        <a href="/2020/10/24/go-basics/"><div class="recent-posts-item-content">GO基础笔记</div></a>
       </div>
     
       <div class="recent-posts-item">
