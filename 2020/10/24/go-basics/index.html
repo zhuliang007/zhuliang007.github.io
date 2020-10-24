@@ -119,89 +119,109 @@
     <div class="section-wrap">
       <div class="container">
         <div class="columns">
-          <main class="main-column"><div class="card card-content category-page-card">
-  <div class="categories-page-title">分类&nbsp-&nbsp移动端</div>
+          <main class="main-column">
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      go-basics
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2020-10-24T05:58:08.000Z" style="display: flex; align-items: center;">
+      <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+      <span>2020-10-24</span>
+    </time>
+    
+    <span class="dot"></span>
+    
+    <a href="/categories/GO/" class="post-meta-link">GO</a>
+    
+    
+    
+    <span class="dot"></span>
+    <span>541 字</span>
+    
+  </div>
+  
+  <div class="post-meta post-show-meta" style="margin-top: -10px;">
+    <div style="display: flex; align-items: center;">
+      <i class="iconfont icon-biaoqian" style="margin-right: 2px; font-size: 1.15rem;"></i>
+      
+      
+        <a href="/tags/GO/" class="post-meta-link">GO</a>
+      
+    </div>
+  </div>
+  
+  </header>
+  <div id="section" class="post-content">
+    <h4 id="GO基础笔记"><a href="#GO基础笔记" class="headerlink" title="GO基础笔记"></a>GO基础笔记</h4><blockquote>
+<p>批量变量声明  </p>
+</blockquote>
+<ul>
+<li>变量初始化：<br>Go语言在声明变量的时候，会自动对变量对应的内存区域进行初始化操作。每个变量会被初始化成其类型的默认值，例如： 整型和浮点型变量的默认值为0。 字符串变量的默认值为空字符串。 布尔型变量默认为false。 切片、函数、指针变量的默认为nil。<pre class="highlight"><span class="line"><span class="keyword">var</span> (</span><br><span class="line">    a <span class="keyword">string</span></span><br><span class="line">    b <span class="keyword">int</span></span><br><span class="line">    c <span class="keyword">bool</span></span><br><span class="line">    d <span class="keyword">float32</span></span><br><span class="line">)</span><br></pre>
+<blockquote>
+<p>批量常量声明</p>
+</blockquote>
+</li>
+<li>相对于变量，常量是恒定不变的值，多用于定义程序运行期间不会改变的那些值。 常量的声明和变量声明非常类似，只是把var换成了const，常量在定义的时候必须赋值。<pre class="highlight"><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">    user = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line">    sex = <span class="string">&#x27;男&#x27;</span></span><br><span class="line">&#125;</span><br></pre>
+
+</li>
+</ul>
+<blockquote>
+<p>iota 常量计数器（GO）</p>
+</blockquote>
+<ul>
+<li>是go语言的常量计数器，只能在常量的表达式中使用。<br>iota在const关键字出现时将被重置为0。const中每新增一行常量声明将使iota计数一次(iota可理解为const语句块中的行索引)。 使用iota能简化定义，在定义枚举时很有用。</li>
+<li>常见的iota:   <ol>
+<li>使用_跳过某些值<pre class="highlight"><span class="line">   <span class="keyword">const</span> (</span><br><span class="line">	n1 = <span class="literal">iota</span> <span class="comment">//0</span></span><br><span class="line">	n2        <span class="comment">//1</span></span><br><span class="line">	_</span><br><span class="line">	n4        <span class="comment">//3</span></span><br><span class="line">)</span><br></pre></li>
+<li>iota 声明中间插队<pre class="highlight"><span class="line">   <span class="keyword">const</span> (</span><br><span class="line">	n1 = <span class="literal">iota</span> <span class="comment">//0</span></span><br><span class="line">	n2 = <span class="number">100</span>  <span class="comment">//100</span></span><br><span class="line">	n3 = <span class="literal">iota</span> <span class="comment">//2</span></span><br><span class="line">	n4        <span class="comment">//3</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">const</span> n5 = <span class="literal">iota</span> <span class="comment">//0</span></span><br></pre></li>
+<li>定义数量级 （这里的&lt;&lt;表示左移操作，1&lt;&lt;10表示将1的二进制表示向左移10位，也就是由1变成了10000000000，也就是十进制的1024。同理2&lt;&lt;2表示将2的二进制表示向左移2位，也就是由10变成了1000，也就是十进制的8。）<pre class="highlight"><span class="line">   <span class="keyword">const</span> (</span><br><span class="line">	_  = <span class="literal">iota</span></span><br><span class="line">	KB = <span class="number">1</span> &lt;&lt; (<span class="number">10</span> * <span class="literal">iota</span>)</span><br><span class="line">	MB = <span class="number">1</span> &lt;&lt; (<span class="number">10</span> * <span class="literal">iota</span>)</span><br><span class="line">	GB = <span class="number">1</span> &lt;&lt; (<span class="number">10</span> * <span class="literal">iota</span>)</span><br><span class="line">	TB = <span class="number">1</span> &lt;&lt; (<span class="number">10</span> * <span class="literal">iota</span>)</span><br><span class="line">	PB = <span class="number">1</span> &lt;&lt; (<span class="number">10</span> * <span class="literal">iota</span>)</span><br><span class="line">)</span><br></pre></li>
+<li>多个iota定义在一行<pre class="highlight"><span class="line">   <span class="keyword">const</span> (</span><br><span class="line">	a, b = <span class="literal">iota</span> + <span class="number">1</span>, <span class="literal">iota</span> + <span class="number">2</span> <span class="comment">//1,2</span></span><br><span class="line">	c, d                      <span class="comment">//2,3</span></span><br><span class="line">	e, f                      <span class="comment">//3,4</span></span><br><span class="line">)</span><br></pre>
+
+</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>字符串  </p>
+</blockquote>
+<ul>
+<li>Go语言中字符串是需要用双引号包裹</li>
+<li>Go语言中单引号包裹的是字符<pre class="highlight"><span class="line"><span class="comment">// 字符串</span></span><br><span class="line">s := <span class="string">&quot;我是字符串&quot;</span></span><br><span class="line"><span class="comment">// 单独的字符</span></span><br><span class="line">b := <span class="string">&#x27;字&#x27;</span></span><br><span class="line">c := <span class="string">&#x27;符&#x27;</span></span><br></pre></li>
+</ul>
+
+  </div>
+  <div>
+  
+  </div>
+</article>
+<div class="nav">
+  
+  
+  <div class="nav-item-next">
+    <a href="/2020/10/05/android-components/" class="nav-link">
+      <div>
+        <div class="nav-label">下一篇</div>
+        
+        <div class="nav-title">android-四大组件 </div>
+        
+      </div>
+      <i class="iconfont icon-right nav-next-icon"></i>
+    </a>
+  </div>
+  
 </div>
-<div class="archive-timeline">
-  
-  
-  
-  <div class="archive-timeline-tag"><span>2020</span></div>
-  
-  
-  <div class="archive-timeline-item">
-    <div class="archive-timeline-post">
-      <div class="card card-content">
-        <div class="archive-timeline-post-date">2020-10-05</div>
-        <div class="archive-timeline-post-content">
-          <a href="/2020/10/05/android-components/" class="archive-timeline-post-item">android-四大组件</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  <div class="archive-timeline-item">
-    <div class="archive-timeline-post">
-      <div class="card card-content">
-        <div class="archive-timeline-post-date">2020-09-23</div>
-        <div class="archive-timeline-post-content">
-          <a href="/2020/09/23/android-basis/" class="archive-timeline-post-item">android-基础</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  <div class="archive-timeline-item">
-    <div class="archive-timeline-post">
-      <div class="card card-content">
-        <div class="archive-timeline-post-date">2020-09-16</div>
-        <div class="archive-timeline-post-content">
-          <a href="/2020/09/16/android-kotlin01/" class="archive-timeline-post-item">kotlin - 学习之data class 数据类</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  <div class="archive-timeline-item">
-    <div class="archive-timeline-post">
-      <div class="card card-content">
-        <div class="archive-timeline-post-date">2020-09-06</div>
-        <div class="archive-timeline-post-content">
-          <a href="/2020/09/06/android-plug-in/" class="archive-timeline-post-item">android-插件库收集</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  <div class="archive-timeline-item">
-    <div class="archive-timeline-post">
-      <div class="card card-content">
-        <div class="archive-timeline-post-date">2020-09-06</div>
-        <div class="archive-timeline-post-content">
-          <a href="/2020/09/06/android-mvp/" class="archive-timeline-post-item">android-MVP模式</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  <div class="archive-timeline-item">
-    <div class="archive-timeline-post">
-      <div class="card card-content">
-        <div class="archive-timeline-post-date">2020-09-05</div>
-        <div class="archive-timeline-post-content">
-          <a href="/2020/09/05/android-gradle/" class="archive-timeline-post-item">android studio 4.0 - gradle 6.1.1 安装</a>
-        </div>
-      </div>
-    </div>
-  </div>
+
+<div class="card card-content comment-card" style="margin-top: 16px;">
+  <div class="comment-card-title">评论</div>
   
 </div>
-</main>
+
+<div class="card card-content toc-card" id="mobiletoc">
+  <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#GO%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0"><span class="toc-text">GO基础笔记</span></a></li></ol>
+</div></main>
           <aside class="left-column">
             
             <div class="card card-author">
@@ -227,6 +247,13 @@
             
             <div class="sticky-tablet">
   
+  
+  <article class="display-when-two-columns spacer">
+    <div class="card card-content toc-card">
+      <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#GO%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0"><span class="toc-text">GO基础笔记</span></a></li></ol>
+    </div>
+  </article>
   
   
   <article class="card card-content">
@@ -266,58 +293,16 @@
   </article>
   
   
-  <article class="card card-content widescreen-archive">
-    <div class="archive-card">
-  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>归档</div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a href="/archives/2020" class="archive-card-list-item">
-          2020
-          <span class="archive-card-list-item-badge">7</span>
-      </a>
-    
-  </div>
-</div>
-  </article>
-  
 </div>
           </aside>
           <aside class="right-column">
             <div class="sticky-widescreen">
   
+  
+  <article class="card card-content toc-card">
+    <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#GO%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0"><span class="toc-text">GO基础笔记</span></a></li></ol>
+  </article>
   
   
   <article class="card card-content">
@@ -349,53 +334,6 @@
 </div>
   </article>
   
-  
-  <article class="card card-content">
-    <div class="archive-card">
-  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>归档</div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a href="/archives/2020" class="archive-card-list-item">
-          2020
-          <span class="archive-card-list-item-badge">7</span>
-      </a>
-    
-  </div>
-</div>
-  </article>
   
 </div>
           </aside>
